@@ -13,7 +13,7 @@ public class AnalyzeCommentTest {
 
     @Before
     public void init() {
-        client = new Client(1, "apik","apiV");
+        client = new Client("apik", "apiV");
     }
 
     @Test
@@ -53,7 +53,7 @@ public class AnalyzeCommentTest {
             .addAttribute(Attribute.ofType(Attribute.TOXICITY));
         try {
             requestNoComment.bodyJSON();
-            Assert.fail("Expecting to fail because a comment wasn't provided");
+            Assert.fail("Expected IllegalArgumentException because a comment wasn't provided");
         } catch (IllegalArgumentException e) {
             // pass
         }
@@ -62,7 +62,7 @@ public class AnalyzeCommentTest {
         requestNoComment.addContext("I am context").setComment("I am a comment");
         try {
             requestNoAttribute.bodyJSON();
-            Assert.fail("Expecting to fail because an attribute wasn't provided");
+            Assert.fail("Expected IllegalArgumentException because an attribute wasn't provided");
         } catch (IllegalArgumentException e) {
             // pass
         }

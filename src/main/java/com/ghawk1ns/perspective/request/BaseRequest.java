@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.base.Function;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.MoreExecutors;
 import org.asynchttpclient.Response;
 import org.asynchttpclient.extras.guava.ListenableFutureAdapter;
 
@@ -26,16 +27,14 @@ abstract class BaseRequest<R> {
         }
 
         ListenableFuture<Response> response = ListenableFutureAdapter
-            .asGuavaFuture(client.http.preparePost(getPath())
-                .setBody(body)
-                .execute());
+            .asGuavaFuture(client.http.preparePost(getPath()).setBody(body).execute());
         return Futures.transform(response, new Function<Response, R>() {
             @Nullable
             @Override
             public R apply(@Nullable Response r) {
                 return transform(r);
             }
-        }, client.transformExecutor);
+        }, MoreExecutors.directExecutor());
     }
 
     /**

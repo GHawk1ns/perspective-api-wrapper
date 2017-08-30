@@ -6,31 +6,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 public class Client {
 
-    private static final String _BASE = "https://commentanalyzer.googleapis.com/%s/%%s";
-
-    private final String BASE_PATH_FORMAT;
+    private static final String BASE_FORMAT = "https://commentanalyzer.googleapis.com/%s/%%s?key=%s";
+    private final String BASE_PATH;
 
     final AsyncHttpClient http;
-    final ExecutorService transformExecutor;
     final ObjectMapper mapper;
 
-    public Client(int executorThreadCount, String apiKey, String apiVersion) {
-        transformExecutor = Executors.newFixedThreadPool(executorThreadCount);
+    public Client(String apiKey, String apiVersion) {
         http = new DefaultAsyncHttpClient();
         mapper = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .setSerializationInclusion(Include.NON_DEFAULT);
-
-        StringBuilder urlBuilder = new StringBuilder(String.format(_BASE, apiVersion));
-        if (apiKey != null) {
-            urlBuilder.append("?key=").append(apiKey);
-        }
-        BASE_PATH_FORMAT = urlBuilder.toString();
+        BASE_PATH = String.format(BASE_FORMAT, apiVersion, apiKey);
     }
 
     /**
@@ -38,6 +27,6 @@ public class Client {
      * @return the path for a given endpoint: BASE_PATH / API_VERSION / endpoint
      */
     String getEndpoint(String endpoint) {
-        return String.format(BASE_PATH_FORMAT, endpoint);
+        return String.format(BASE_PATH, endpoint);
     }
 }

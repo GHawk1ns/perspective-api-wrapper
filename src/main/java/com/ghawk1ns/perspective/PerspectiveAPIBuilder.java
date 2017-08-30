@@ -6,12 +6,6 @@ public class PerspectiveAPIBuilder {
     String clientToken;
     String apiKey;
     String apiVersion = "v1alpha1";
-    int executorThreadCount = 10;
-
-    public PerspectiveAPIBuilder setExecutorThreadCount(int executorThreadCount) {
-        this.executorThreadCount = executorThreadCount;
-        return this;
-    }
 
     public PerspectiveAPIBuilder setSessionId(String sessionId) {
         this.sessionId = sessionId;

@@ -10,11 +10,10 @@ public class PerspectiveAPI {
 
     private final Client client;
 
-    public PerspectiveAPI(PerspectiveAPIBuilder builder) {
+    PerspectiveAPI(PerspectiveAPIBuilder builder) {
         this.sessionId = builder.sessionId;
         this.clientToken = builder.clientToken;
-        client = new Client(builder.executorThreadCount, builder.apiKey,
-            builder.apiVersion);
+        client = new Client(builder.apiKey, builder.apiVersion);
     }
 
     public AnalyzeCommentRequest analyze() {
