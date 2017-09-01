@@ -76,5 +76,6 @@ public class AnalyzeCommentResponseTest {
         Assert.assertEquals(0.99959844f, response.getAttributeSummaryScore("LIKELY_TO_REJECT"), 0);
         Assert.assertEquals(0.022719337f, response.getAttributeSummaryScore("ATTACK_ON_AUTHOR"), 0);
         Assert.assertEquals(0.97946084f, response.getAttributeSummaryScore("TOXICITY"), 0);
+        Assert.assertEquals(0f, response.getAttributeSummaryScore("fakeAttribute"), 0);
     }
 }
