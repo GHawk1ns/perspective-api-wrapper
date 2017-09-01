@@ -24,3 +24,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client-extras-guava
     compile group: 'org.asynchttpclient', name: 'async-http-client-extras-guava', version: '2.0.35'
 }
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'perspective-api-wrapper',
+                'Implementation-Version': version
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
