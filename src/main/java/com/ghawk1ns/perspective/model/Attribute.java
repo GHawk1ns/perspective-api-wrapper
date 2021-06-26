@@ -12,7 +12,6 @@ public class Attribute {
      * For more information visit
      https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages
      */
-
     public static final String TOXICITY = "TOXICITY";
     public static final String TOXICITY_EXPERIMENTAL = "TOXICITY_EXPERIMENTAL";
     public static final String SEVERE_TOXICITY = "SEVERE_TOXICITY";
