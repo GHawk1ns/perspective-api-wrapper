@@ -9,54 +9,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Attribute {
 
     /**
-     *  rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion.
+     * For more information visit
+     https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages
      */
+
     public static final String TOXICITY = "TOXICITY";
+    public static final String TOXICITY_EXPERIMENTAL = "TOXICITY_EXPERIMENTAL";
+    public static final String SEVERE_TOXICITY = "SEVERE_TOXICITY";
+    public static final String SEVERE_TOXICITY_EXPERIMENTAL = "SEVERE_TOXICITY_EXPERIMENTAL";
+    public static final String IDENTITY_ATTACK = "IDENTITY_ATTACK";
+    public static final String IDENTITY_ATTACK_EXPERIMENTAL = "IDENTITY_ATTACK_EXPERIMENTAL";
+    public static final String INSULT = "INSULT";
+    public static final String INSULT_EXPERIMENTAL = "INSULT_EXPERIMENTAL";
+    public static final String PROFANITY = "PROFANITY";
+    public static final String PROFANITY_EXPERIMENTAL = "PROFANITY_EXPERIMENTAL";
+    public static final String THREAT = "THREAT";
+    public static final String THREAT_EXPERIMENTAL = "THREAT_EXPERIMENTAL";
+    public static final String SEXUALLY_EXPLICIT = "SEXUALLY_EXPLICIT";
+    public static final String FLIRTATION = "FLIRTATION";
 
-    /**
-     * Similar to the TOXICITY model, but has lower latency and lower accuracy.
-     */
-    public static final String TOXICITY_FAST = "TOXICITY_FAST";
-
-    /**
-     * Attack on author of original article or post.
-     */
-    public static final String ATTACK_ON_AUTHOR = "ATTACK_ON_AUTHOR";
-
-    /**
-     * Attack on fellow commenter.
-     */
-    public static final String ATTACK_ON_COMMENTER = "ATTACK_ON_COMMENTER";
-
-    /**
-     * Difficult to understand, nonsensical.
-     */
-    public static final String INCOHERENT = "INCOHERENT";
-
-    /**
-     *  Intending to provoke or inflame.
-     */
-    public static final String INFLAMMATORY = "INFLAMMATORY";
-
-    /**
-     * Obscene or vulgar language such as cursing.
-     */
-    public static final String OBSCENE = "OBSCENE";
-
-    /**
-     * Irrelevant and unsolicited commercial content.
-     */
-    public static final String SPAM = "SPAM";
-
-    /**
-     * Trivial or short comments.
-     */
-    public static final String UNSUBSTANTIAL = "UNSUBSTANTIAL";
-
-    /**
-     *  Overall measure of the likelihood for the comment to be rejected according by the NYT's moderation.
-     */
-    public static final String LIKELY_TO_REJECT = "LIKELY_TO_REJECT";
 
     @JsonIgnore
     public final String type;
